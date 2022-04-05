@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>
+       Car Model
+    </h1>
+    <p>Welcome to the Car Model Page</p>
+    <p>Create a New Car Model</p>
+
+    <div class="container">
+        <form action="/car" method="post">
+        <div class="row">
+          <div class="col-25">
+    
+        <label for="manufacturer">Manufacturer:</label><br>
+        </div>
+        <div class="col-75">
+        <input type="text" id="manufactuer" name="manufacturer" value=""><br>
+        </div></div>
+        <div class="row">
+        <div class="col-25">
+        <label for="model">Model:</label><br>
+        </div>
+        <div class="col-75">
+        <input type="text" id="model" name="model" value=""><br>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-25">
+        <label for="color">Color:</label><br>
+        </div>
+        <div class="col-75">
+        <input type="text" id="color" name="color" value=""><br><br>
+        </div></div>
+        <div class="row">
+        <div class="col-25">
+        <label for="year">Year:</label><br>
+        </div>
+        <div class="col-75">
+        <input type="text" id="year" name="year" value=""><br><br>
+        </div></div>
+        <div class="row">
+        <input type="submit" value="Submit">
+        </div>
+    </form>
+    <table id="cars">
+        <tr>
+            <th>Number</th>
+          <th>Manufacturer</th>
+          <th>Model</th>
+          <th>Color</th>
+          <th>Year</th>
+          <th>Actions</th>
+        </tr>
+      
+    <% for(let i=0; i < carPosts.length; i++) { %>
+        <p>
+    
+            <tr>
+                    <td><%- i + 1 %></td>
+                  <td><%- carPosts[i].manufacturer %></td>
+                  <td><%- carPosts[i].model %></td>
+                  <td><%- carPosts[i].color %></td>
+                  <td><%- carPosts[i].year %></td>
+                  <td><a href="/car/<%= carPosts[i].id%>/edit">Edit</a>
+                     <a href="/car/<%= carPosts[i].id%>/delete">Delete</a></td>
+          
+                </tr>         
+        </p>
+        <% } %>
+
+    </table>  
+
+</body>
+
+</html>
